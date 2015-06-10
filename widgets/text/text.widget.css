@@ -1,0 +1,15 @@
+.widget[iotb-widget="text"] {
+  color: black;
+  padding: 4px;
+  font-family: cursive;
+}
+
+.widget[iotb-widget="text"] .title {
+  font-weight: bold;
+  border-bottom: solid 1px gray;
+  font-size: 18px;
+}
+
+.widget[iotb-widget="text"] .text {
+  margin-top: 4px;
+}
