@@ -24,14 +24,25 @@ $(document).ready(function(){
       (function(l){
         widget.dom.on(l["event"], l["selector"], function(e){
           console.log("listener " + l["event"] + "fired.");
-          widget.config.status = l["getStatus"](widget.dom);
-          iotboard.getModel().onStatusChanged(widget.dom.attr("iotb-widget"), widget.dom.data("label"), widget.config.status);
+          switch (l["behavior"]){
+            case "set":
+              widget.config.status = widget.config["parseStatus"](widget.dom);
+              iotboard.getModel().onWidgetStatusChanged(widget.dom.attr("iotb-widget"), widget.dom.data("label"), widget.config.status);
+              break;
+            case "get":
+              console.log("updating widget " + name + "...");
+              model.getCurrentStatus(name, self.data["label"], function(status){
+                widget.status = status;
+              });
+              break;
+          }
+          
         })
       })(widget.config.listeners[i]);
     }
 
     console.log("updating widget " + name + "...");
-    model.getStatus(name, self.data["label"], function(status){
+    model.getCurrentStatus(name, self.data["label"], function(status){
       widget.status = status;
     })
   });

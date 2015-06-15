@@ -1,7 +1,6 @@
 .widget[iotb-widget="text"] {
   color: black;
   padding: 4px;
-  font-family: cursive;
 }
 
 .widget[iotb-widget="text"] .title {

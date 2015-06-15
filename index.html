@@ -9,21 +9,31 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="stylesheet" href="css/reset.css" media="screen" type="text/css" />
   <link rel="stylesheet" href="css/board.css" media="screen" type="text/css" />
-
-  <link rel="stylesheet" href="widgets/text/text.widget.css" media="screen" type="text/css" />
-
   <script src="thirdparty/zepto/zepto.js"></script>
   <script src="thirdparty/zepto/event.js"></script>
-
   <script src="js/widget.js"></script>
   <script src="js/iotboard.js"></script>
   <script src="js/binding.js"></script>
 
+  <!-- add widget css files here -->
+  <link rel="stylesheet" href="widgets/text/text.widget.css" media="screen" type="text/css" />
+  <link rel="stylesheet" href="widgets/switch/switch.widget.css" media="screen" type="text/css" />
+  <!-- -->
+
+  <!-- add widget js files here -->
   <script src="widgets/text/text.widget.js"></script>
+  <script src="widgets/switch/switch.widget.js"></script>
+  <!-- -->
+
+  <!-- model here -->
   <script src="models/dummy.model.js"></script>
+  <!-- -->
 </head>
 <body>
   <div class="widget" iotb-widget="text" data-label="text1" data-title="随意"></div>
   <div class="widget" iotb-widget="text" data-label="text2" data-title="hell"></div>
+
+  <div class="widget" iotb-widget="switch" data-label="switch1" data-title="开关1"></div>
+  <div class="widget" iotb-widget="switch" data-label="switch2" data-title="开关2"></div>
 </body>
 </html>

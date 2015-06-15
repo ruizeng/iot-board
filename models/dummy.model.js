@@ -13,10 +13,14 @@
    * @param  {Object} status [the new status of widget]
    * @return {None}
    */
-  model.onStatusChanged = function(widget, label, status){
+  model.onWidgetStatusChanged = function(widget, label, status){
     switch(widget){
       case "text":
         console.log(status.text);
+        break;
+      case "switch":
+        console.log("switch status changed:" + label)
+        console.log(JSON.stringify(status));
         break;
       default:
         console.log("widget {" + widget + "}" + " handler not found!");
@@ -31,13 +35,19 @@
    * @param  {callback} callback [the result status will be passed through callback(status)]
    * @return {None}
    */
-  model.getStatus = function(widget, label, callback) {
+  model.getCurrentStatus = function(widget, label, callback) {
     switch(widget){
       case "text":
         callback({
-          text: "status changed."
+          text: "status changed:" + (new Date())
         })
         break;
+      case "switch": {
+        callback({
+          on: Math.floor(Math.random()*100)%2 == 0? true: false
+        });
+        break;
+      }
 
       default:
         console.log("widget {" + widget + "}" + " handler not found!");

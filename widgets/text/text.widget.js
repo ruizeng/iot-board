@@ -16,13 +16,19 @@
       {
         selector: ".text",
         event: "click",
-        getStatus: function(dom){
-          return {
-            text: dom.find(".text").html()
-          }
-        }
+        behavior: "set"
+      },
+      {
+        selector: ".title",
+        event: "click",
+        behavior: "get"
       }
-    ]
+    ],
+    parseStatus: function(dom){
+      return {
+        text: dom.find(".text").html()
+      }
+    },
   });
 
   console.log("add widget {text}");
