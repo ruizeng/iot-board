@@ -17,6 +17,10 @@
 
     var render = function(){
       dom.html(config.render(dom[0].dataset));
+
+      if(config.onRendered){
+        config.onRendered(dom);
+      }
     }
 
     Object.defineProperty(this, 'status', {

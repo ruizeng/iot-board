@@ -23,7 +23,7 @@ $(document).ready(function(){
     for(var i=0; i<widget.config.listeners.length; i++) {
       (function(l){
         widget.dom.on(l["event"], l["selector"], function(e){
-          console.log("listener " + l["event"] + "fired.");
+          console.log("listener " + l["event"] + " fired.");
           switch (l["behavior"]){
             case "set":
               widget.config.status = widget.config["parseStatus"](widget.dom);

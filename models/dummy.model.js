@@ -19,7 +19,11 @@
         console.log(status.text);
         break;
       case "switch":
-        console.log("switch status changed:" + label)
+        console.log("switch status changed:" + label);
+        console.log(JSON.stringify(status));
+        break;
+      case "led":
+        console.log("led status changed:" + label);
         console.log(JSON.stringify(status));
         break;
       default:
@@ -42,13 +46,20 @@
           text: "status changed:" + (new Date())
         })
         break;
-      case "switch": {
+      case "switch": 
         callback({
           on: Math.floor(Math.random()*100)%2 == 0? true: false
         });
         break;
-      }
-
+      case "led":
+        callback({
+          red: Math.floor(Math.random()*256),
+          green: Math.floor(Math.random()*256),
+          blue: Math.floor(Math.random()*256),
+          freq: Math.round(Math.random()*1000),
+          white: Math.floor(Math.random()*256),
+        });
+        break;
       default:
         console.log("widget {" + widget + "}" + " handler not found!");
         break;

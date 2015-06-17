@@ -12,7 +12,7 @@
     },
     render: function(dataset){
       cnt ++;
-      return '<div class="title">' + dataset.title + '</div>'
+      return '<div class="switch-title">' + dataset.title + '</div>'
             + '<div class="switch-wrap">'
             + '<input type="checkbox" class="slider-v1" '+ (this.status["on"]?'checked':'') +' id="autogen-s' + cnt + '" />'
             + '<label for="autogen-s'+ cnt + '"></label>'
@@ -25,7 +25,7 @@
         behavior: "set"
       },
       {
-        selector: ".title",
+        selector: ".switch-title",
         event: "click",
         behavior: "get"
       }
@@ -37,5 +37,5 @@
     },
   });
 
-  console.log("add widget {text}");
+  console.log("add widget {switch}");
 }();

@@ -1,13 +1,18 @@
-.switch-wrap { position:relative; width:33.33%; margin: 0; float: right;}
+.switch-wrap { 
+  position:relative; 
+  width:33.33%; 
+  margin: 0 10px; 
+  float: right;}
 
 .clf {clear: both;}
 
-.widget[iotb-widget="switch"] .title{
+.widget[iotb-widget="switch"] .switch-title{
   display: inline-block;
   color: black;
   font-size: 18px;
   line-height: 42px;
   height: 42px;
+  margin: 0 10px;
 }
 
 [class*="slider-"] { display:none }
