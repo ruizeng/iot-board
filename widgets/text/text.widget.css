@@ -1,0 +1,8 @@
+.widget[iotb-widget="text"] {
+  color: black;
+  padding: 4px;
+}
+
+.widget[iotb-widget="text"] .text {
+  margin-top: 4px;
+}

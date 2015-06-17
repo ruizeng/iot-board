@@ -1,0 +1,11 @@
+{
+  "name": "iot-board",
+  "title": "iot-board",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PandoCloud/iot-board.git"
+  },
+  "version": "0.0.1",
+  "devDependencies": {
+  }
+}
