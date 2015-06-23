@@ -31,7 +31,7 @@ $(document).ready(function(){
               break;
             case "get":
               console.log("updating widget " + name + "...");
-              model.getCurrentStatus(name, self.data["label"], function(status){
+              model.getCurrentStatus(name, self.data("label"), function(status){
                 widget.status = status;
               });
               break;
@@ -41,8 +41,8 @@ $(document).ready(function(){
       })(widget.config.listeners[i]);
     }
 
-    console.log("updating widget " + name + "...");
-    model.getCurrentStatus(name, self.data["label"], function(status){
+    console.log("updating widget " + name +  ":" + JSON.stringify(self.data) + "...");
+    model.getCurrentStatus(name, self.data("label"), function(status){
       widget.status = status;
     })
   });

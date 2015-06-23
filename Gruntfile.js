@@ -19,7 +19,7 @@ module.exports = function(grunt) {
         dest: 'dist/models/dummy.model.js'
       },
       freeiot: {
-        src: ['models/freeiot/*.js'],
+        src: ['models/freeiot/bridge.js', 'models/freeiot/freeiot.model.js'],
         dest: 'dist/models/freeiot.model.js'
       }
     },

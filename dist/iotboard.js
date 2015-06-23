@@ -1209,7 +1209,7 @@ window.$ === undefined && (window.$ = Zepto)
               break;
             case "get":
               console.log("updating widget " + name + "...");
-              model.getCurrentStatus(name, self.data["label"], function(status){
+              model.getCurrentStatus(name, self.data("label"), function(status){
                 widget.status = status;
               });
               break;
@@ -1219,8 +1219,8 @@ window.$ === undefined && (window.$ = Zepto)
       })(widget.config.listeners[i]);
     }
 
-    console.log("updating widget " + name + "...");
-    model.getCurrentStatus(name, self.data["label"], function(status){
+    console.log("updating widget " + name +  ":" + JSON.stringify(self.data) + "...");
+    model.getCurrentStatus(name, self.data("label"), function(status){
       widget.status = status;
     })
   });

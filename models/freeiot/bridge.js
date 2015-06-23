@@ -341,6 +341,20 @@
         , 0)
     }
 
+    window.OnPandoJSBridgeReady = function(callback){
+        if (window.PandoJSBridge) {
+            console.log("has PandoJSBridge...");
+            callback(PandoJSBridge)
+        } else {
+            console.log("PandoJSBridge not init...");
+            document.addEventListener('PandoJSBridgeReady',
+            function() {
+                callback(PandoJSBridge)
+            },
+            false)
+        }
+    }
+
     window.PandoJSBridge = {
         init: init,
         send: send,
