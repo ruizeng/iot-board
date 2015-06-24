@@ -27,7 +27,14 @@ module.exports = function(grunt) {
       widgets: {
         files: [{
           expand: true, 
-          src: ['widgets/**'], dest: 'dist/'
+          src: ['widgets/**'], 
+          dest: 'dist/'
+        },{
+          expand: true, 
+          flatten: true,
+          src: ['css/img/*'], 
+          dest: 'dist/img/',
+          filter: 'isFile'
         }]
       }
     },
@@ -42,7 +49,8 @@ module.exports = function(grunt) {
           'dist/models/dummy.model.min.js': ['dist/models/dummy.model.js'],
           'dist/widgets/led/led.widget.min.js': ['dist/widgets/led/led.widget.js'],
           'dist/widgets/switch/switch.widget.min.js': ['dist/widgets/switch/switch.widget.js'],
-          'dist/widgets/text/text.widget.min.js': ['dist/widgets/text/text.widget.js']
+          'dist/widgets/text/text.widget.min.js': ['dist/widgets/text/text.widget.js'],
+          'dist/widgets/atmosphere/atmosphere.widget.min.js': ['dist/widgets/atmosphere/atmosphere.widget.js']
         }
       }
     },
@@ -72,7 +80,13 @@ module.exports = function(grunt) {
           src: ['*.css', '!*.min.css'],
           dest: 'dist/widgets/text',
           ext: '.widget.min.css'
-        },]
+        },{
+          expand: true,
+          cwd: 'dist/widgets/atmosphere',
+          src: ['*.css', '!*.min.css'],
+          dest: 'dist/widgets/atmosphere',
+          ext: '.widget.min.css'
+        }]
       }
     }
   });

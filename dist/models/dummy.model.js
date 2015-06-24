@@ -47,18 +47,31 @@
         })
         break;
       case "switch": 
-        callback({
-          on: Math.floor(Math.random()*100)%2 == 0? true: false
-        });
+        setTimeout(function(){
+          callback({
+            on: Math.floor(Math.random()*100)%2 == 0? true: false
+          });
+        }, 1000);
         break;
       case "led":
-        callback({
-          red: Math.floor(Math.random()*256),
-          green: Math.floor(Math.random()*256),
-          blue: Math.floor(Math.random()*256),
-          freq: Math.round(Math.random()*1000),
-          white: Math.floor(Math.random()*256),
-        });
+        setTimeout(function(){
+          callback({
+            red: Math.floor(Math.random()*256),
+            green: Math.floor(Math.random()*256),
+            blue: Math.floor(Math.random()*256),
+            freq: Math.round(Math.random()*1000),
+            white: Math.floor(Math.random()*256),
+          });
+        }, 1000);
+        break;
+      case "atmosphere":
+        setTimeout(function(){
+          callback({
+            temperature: 30.3,
+            humidity: 45.1,
+            pm25: 56.6
+          });
+        }, 1000);
         break;
       default:
         console.log("widget {" + widget + "}" + " handler not found!");

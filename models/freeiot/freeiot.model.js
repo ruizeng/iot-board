@@ -31,8 +31,20 @@
         }());
         break;
       case "led":
-        console.log("led status changed:" + label);
-        console.log(JSON.stringify(status));
+        (function(){
+          console.log("led status changed:" + label);
+          console.log(JSON.stringify(status));
+          var data = {};
+          data['set'] = [status['freq'],
+            status['red'],
+            status['green'],
+            status['blue'],
+            status['white']];
+          window.pando.sendCommand(data, function(responseData) {
+            console.log("sendCommand callback....");
+            console.log("responseData: " + JSON.stringify(responseData));
+          });
+        })();
         break;
       default:
         console.log("widget {" + widget + "}" + " handler not found!");
@@ -66,13 +78,30 @@
         })();
         break;
       case "led":
-        callback({
-          red: Math.floor(Math.random()*256),
-          green: Math.floor(Math.random()*256),
-          blue: Math.floor(Math.random()*256),
-          freq: Math.round(Math.random()*1000),
-          white: Math.floor(Math.random()*256),
-        });
+        (function(){
+          window.pando.getDeviceStatus(function(responseData) {
+            var status = responseData.data[label];
+            callback({
+              red: status[1],
+              green: status[2],
+              blue: status[3],
+              freq: status[0],
+              white: status[4],
+            });
+          });
+        })();
+        break;
+      case "atmosphere":
+        (function(){
+          window.pando.getDeviceStatus(function(responseData) {
+            var status = responseData.data[label];
+            callback({
+              temperature: status[0].toFixed(1),
+              humidity: status[1].toFixed(1),
+              pm25: status[2].toFixed(1)
+            });
+          });
+        })();
         break;
       default:
         console.log("widget {" + widget + "}" + " handler not found!");

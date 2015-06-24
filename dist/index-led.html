@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>IOT Board</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+  <!-- add iotboard common css and js in the first place -->
+  <link rel="stylesheet" href="iotboard.min.css" media="screen" type="text/css" />
+  <script src="iotboard.min.js"></script>
+
+  <!-- add widgets css and js files here -->
+  <link rel="stylesheet" href="widgets/led/led.widget.min.css" media="screen" type="text/css" />
+  <script src="widgets/led/led.widget.min.js"></script>
+  <!-- -->
+
+  <!-- model to use here -->
+  <script src="models/freeiot.model.min.js"></script>
+  <!-- -->
+</head>
+<body>
+  <!-- add a widget to board -->
+  <div class="widget" iotb-widget="led" data-label="led" data-title="四色灯"></div>
+</body>
+</html>

@@ -49,11 +49,11 @@
     ],
     parseStatus: function(dom){
       return {
-        red: dom.find(".rVal").val(),
-        green: dom.find(".gVal").val(),
-        blue: dom.find(".bVal").val(),
-        freq: dom.find(".freqVal").text(),
-        white: dom.find(".wVal").text()
+        red: parseInt(dom.find(".rVal").val()),
+        green: parseInt(dom.find(".gVal").val()),
+        blue: parseInt(dom.find(".bVal").val()),
+        freq: parseInt(dom.find(".freqVal").text()),
+        white: parseInt(dom.find(".wVal").text())
       }
     },
     onRendered: function(dom){

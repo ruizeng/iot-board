@@ -20,28 +20,30 @@ $(document).ready(function(){
     widget.render();
 
     console.log("binding widget" + name + "...");
-    for(var i=0; i<widget.config.listeners.length; i++) {
-      (function(l){
-        widget.dom.on(l["event"], l["selector"], function(e){
-          console.log("listener " + l["event"] + " fired.");
-          switch (l["behavior"]){
-            case "set":
-              widget.config.status = widget.config["parseStatus"](widget.dom);
-              iotboard.getModel().onWidgetStatusChanged(widget.dom.attr("iotb-widget"), widget.dom.data("label"), widget.config.status);
-              break;
-            case "get":
-              console.log("updating widget " + name + "...");
-              model.getCurrentStatus(name, self.data("label"), function(status){
-                widget.status = status;
-              });
-              break;
-          }
-          
-        })
-      })(widget.config.listeners[i]);
+    if (widget.config.listeners){
+      for(var i=0; i<widget.config.listeners.length; i++) {
+        (function(l){
+          widget.dom.on(l["event"], l["selector"], function(e){
+            console.log("listener " + l["event"] + " fired.");
+            switch (l["behavior"]){
+              case "set":
+                widget.config.status = widget.config["parseStatus"](widget.dom);
+                iotboard.getModel().onWidgetStatusChanged(widget.dom.attr("iotb-widget"), widget.dom.data("label"), widget.config.status);
+                break;
+              case "get":
+                console.log("updating widget " + name + "...");
+                model.getCurrentStatus(name, self.data("label"), function(status){
+                  widget.status = status;
+                });
+                break;
+            }
+            
+          })
+        })(widget.config.listeners[i]);
+      }
     }
 
-    console.log("updating widget " + name +  ":" + JSON.stringify(self.data) + "...");
+    console.log("updating widget " + name +  ":" + JSON.stringify(self.data("label")) + "...");
     model.getCurrentStatus(name, self.data("label"), function(status){
       widget.status = status;
     })

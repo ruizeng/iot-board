@@ -1,17 +1,23 @@
+html {
+  min-height: 100%;
+}
+
 body {
-  background: #202838;
   padding: 10px;
+  background:url(img/bg2.jpeg);
+  background-size:100% 100%;
+  background-repeat:no-repeat;
 }
 
 .widget {
-  box-shadow:1px 1px 1px #aaaaaa;
   background-color: white;
-  opacity: 0.7;
-  border: 1px solid white;
+  opacity: 0.6;
+  border: 1px solid #ccc;
   padding: 4px;
   border-radius: 4px;
   font-size: 14px;
   margin-bottom: 10px;
+  position: relative;
 }
 
 .widget .title {

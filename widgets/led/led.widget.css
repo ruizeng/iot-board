@@ -1,3 +1,4 @@
+.clf {clear: both;}
 /* colorpicker styles */
 .widget[iotb-widget="led"] .colorpicker {
     border-radius: 5px 5px 5px 5px;
