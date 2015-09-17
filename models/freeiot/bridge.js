@@ -377,6 +377,12 @@
     window.pando.sendCommand = function(data, responseCallback) {
         callHandler('sendCommand', data, responseCallback);
     };
+    window.pando.getCurrentStatus = function(responseCallback) {
+        callHandler('getCurrentStatus', {}, responseCallback);
+    };
+    window.pando.setCurrentStatus = function(responseCallback) {
+        callHandler('setCurrentStatus', data, responseCallback);
+    }
 })();
 
 
