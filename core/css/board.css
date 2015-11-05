@@ -1,0 +1,32 @@
+html, body{
+  min-height: 100%;
+}
+
+body {
+  padding: 10px;
+}
+
+html {
+  font-family: 'Open Sans', 'Helvetica Neue';
+}
+
+.widget {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+
+.widget .title {
+  color: #fff;
+  background-color: #61c0ec;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.clf {clear: both;}

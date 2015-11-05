@@ -1,0 +1,21 @@
+!function(){
+  if (!window.iotboard){
+    console.log("iotboard not initialized!");
+    return;
+  }
+
+  var widgetName='temperature';
+  window.iotboard.defineWidget(widgetName, {
+    status: ['-'],
+    render: function(dataset){
+        dataset.status=this.status;
+        return template(widgetName,dataset);
+    },
+    listeners: [],
+    parseStatus: function(dom){
+      return {
+        temperature:dom.find('.temperature-text').text()
+      }
+    },
+  });
+}();

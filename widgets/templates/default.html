@@ -1,0 +1,14 @@
+<%if(title){%>
+  <div class="title"><%=title%>-<%=label%></div>
+<%}%>
+  <%for(var i in config){%>
+  <div class="default-status-wrap">
+    <div class="default-status-name"><%=config[i].name%></div>
+    <div class="default-status-input-wrap">
+      <input class="default-status-input" placeholder="空" value="<%=status[i]%>">
+    </div>
+  </div>
+  <%}%>
+<span class="btn btn-refresh">REFRESH</span>
+<span class="btn btn-set">SET</span>
+<div class="clf"></div>

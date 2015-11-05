@@ -1,0 +1,12 @@
+<%if(title){%>
+  <div class="title"><%=title%></div>
+<%}%>
+<div class="motor">
+  <div class="range-wrap">
+    <label for="range">
+      <input type="range" name="range" id="range" min="-128" max="127" step="1" value="<%=status[0]%>" class="motor-range"/>
+    </label>
+  </div>
+  <span class="motor-speed"><%=status[0]%></span><button class="btn-reset">RESET</button>
+</div>
+<div class="clf"></div>

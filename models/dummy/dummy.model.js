@@ -14,22 +14,8 @@
    * @return {None}
    */
   model.onWidgetStatusChanged = function(widget, label, status){
-    switch(widget){
-      case "text":
-        console.log(status.text);
-        break;
-      case "switch":
-        console.log("switch status changed:" + label);
-        console.log(JSON.stringify(status));
-        break;
-      case "led":
-        console.log("led status changed:" + label);
-        console.log(JSON.stringify(status));
-        break;
-      default:
-        console.log("widget {" + widget + "}" + " handler not found!");
-        break;
-    }
+    console.log("widget {" + widget + "} status changed:" + label);
+    console.log(JSON.stringify(status));
   }
 
   /**
@@ -55,13 +41,10 @@
         break;
       case "led":
         setTimeout(function(){
-          callback({
-            red: Math.floor(Math.random()*256),
-            green: Math.floor(Math.random()*256),
-            blue: Math.floor(Math.random()*256),
-            freq: Math.round(Math.random()*1000),
-            white: Math.floor(Math.random()*256),
-          });
+          callback([Math.floor(Math.random()*256),
+            Math.floor(Math.random()*256),
+            Math.floor(Math.random()*256)]
+            );
         }, 1000);
         break;
       case "atmosphere":
@@ -71,6 +54,28 @@
             humidity: 45.1,
             pm25: 56.6
           });
+        }, 1000);
+        break;
+      case "temperature":
+      case "humiture":
+        setTimeout(function(){
+          callback([33.33333]);
+        }, 1000);
+        break;
+      case "pm25":
+      case "air":
+        setTimeout(function(){
+          callback([345]);
+        }, 1000);
+        break;
+      case "motor":
+        setTimeout(function(){
+          callback([8]);
+        }, 1000);
+        break;
+      case "default":
+        setTimeout(function(){
+          callback([1,2, 3.3]);
         }, 1000);
         break;
       default:
