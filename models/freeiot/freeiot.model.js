@@ -4,7 +4,54 @@
     return;
   }
 
-  var model = {};
+  function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)","i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r!=null&&r.length>1) return (r[2]); return null;
+  }
+
+  if(GetQueryString('from')=='wechat' || GetQueryString('from')=='ide') {
+    window.initFreeIOTWechat();
+  } else {
+    window.initFreeIOTJSBridge();
+  }
+
+  var model = {
+    getStatusPending: false,
+    getStatusQueue: [],
+  };
+
+  function resetModel (){
+    model.getStatusPending = false;
+    getStatusQueue = [];
+  }
+
+  function waitForGettingStatus(label, callback) {
+    if (!model.getStatusPending) {
+      model.getStatusPending = true;
+      getStatusQueue.push({
+        label: label,
+        callback: callback
+      });
+      window.pando.getCurrentStatus(function(responseData) {
+        if(responseData.code != 0) {
+          alert(responseData.message);
+          return resetModel();
+        }
+        var status = responseData.data;
+        var q = model.getStatusQueue;
+        for(var i=0; i<q.length; i++){
+          q[i].callback(status[q[i].label]);
+        }
+        resetModel();
+      });
+    } else {
+      getStatusQueue.push({
+        label: label,
+        callback: callback
+      });
+    }
+  }
 
   /**
    * called when widget's status is changed.
@@ -14,42 +61,14 @@
    * @return {None}
    */
   model.onWidgetStatusChanged = function(widget, label, status){
-    switch(widget){
-      case "text":
-        console.log(status.text);
-        break;
-      case "switch":
-        (function(){
-          console.log("switch status changed:" + label);
-          console.log(JSON.stringify(status));
-          var data = {};
-          data[label] = status.on?[1]:[0];
-          window.pando.sendCommand(data, function(responseData) {
-             console.log("sendCommand callback....");
-             console.log("responseData: " + responseData);
-          });
-        }());
-        break;
-      case "led":
-        (function(){
-          console.log("led status changed:" + label);
-          console.log(JSON.stringify(status));
-          var data = {};
-          data['set'] = [status['freq'],
-            status['red'],
-            status['green'],
-            status['blue'],
-            status['white']];
-          window.pando.sendCommand(data, function(responseData) {
-            console.log("sendCommand callback....");
-            console.log("responseData: " + JSON.stringify(responseData));
-          });
-        })();
-        break;
-      default:
-        console.log("widget {" + widget + "}" + " handler not found!");
-        break;
-    }
+    var data = {};
+    data[label] = status;
+    window.pando.setCurrentStatus(data, function(responseData) {
+      console.log("responseData: " + responseData);
+      if(responseData.code != 0) {
+        alert(responseData.message);
+      }
+    });
   }
 
   /**
@@ -60,53 +79,7 @@
    * @return {None}
    */
   model.getCurrentStatus = function(widget, label, callback) {
-    switch(widget){
-      case "text":
-        callback({
-          text: "status changed:" + (new Date())
-        })
-        break;
-      case "switch":
-        console.log(label);
-        (function(){
-          window.pando.getDeviceStatus(function(responseData) {
-            var data = responseData.data;
-            callback({
-              on: (data[label][0] == 0)?false:true
-            });
-          });
-        })();
-        break;
-      case "led":
-        (function(){
-          window.pando.getDeviceStatus(function(responseData) {
-            var status = responseData.data[label];
-            callback({
-              red: status[1],
-              green: status[2],
-              blue: status[3],
-              freq: status[0],
-              white: status[4],
-            });
-          });
-        })();
-        break;
-      case "atmosphere":
-        (function(){
-          window.pando.getDeviceStatus(function(responseData) {
-            var status = responseData.data[label];
-            callback({
-              temperature: status[0].toFixed(1),
-              humidity: status[1].toFixed(1),
-              pm25: status[2].toFixed(1)
-            });
-          });
-        })();
-        break;
-      default:
-        console.log("widget {" + widget + "}" + " handler not found!");
-        break;
-    }
+    waitForGettingStatus(labal.callback);
   }
 
   window.iotboard.setModel(model);
