@@ -1,0 +1,83 @@
+
+.widget[iotb-widget="motor"] .motor {
+  height:150px;
+  display:-webkit-box;
+  -webkit-box-align:center;
+  -webkit-box-orient:vertical;
+  width:100%;
+}
+.widget[iotb-widget="motor"] .range-wrap {
+  width:90%;
+  margin: 10px 0;
+}
+.widget[iotb-widget="motor"]  .motor > .motor-speed {
+  height: 30px;
+  width:60px;
+  display: inline-block;
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+  line-height: 30px;
+  color: rgba(48, 113, 169, 0.78);;
+}
+.widget[iotb-widget="motor"]  .motor .btn-reset {
+  color: white;
+  background: rgba(48, 113, 169, 0.78);
+  border: none;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  height: 30px;
+  margin-right: 30px;
+  border-radius: 4px;
+}
+.widget[iotb-widget="motor"]  label[for=range]{
+  margin-top:65px;
+}
+.widget[iotb-widget="motor"]  input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 7.3px 0;
+}
+.widget[iotb-widget="motor"]  input[type=range]:focus {
+  outline: none;
+}
+.widget[iotb-widget="motor"]  input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 30px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: rgba(48, 113, 169, 0.78);
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+.widget[iotb-widget="motor"]  input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0.9px 0.9px 1px #000031, 0px 0px 0.9px #00004b;
+  border: 1.8px solid #00001e;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -5px;
+}
+.widget[iotb-widget="motor"]  input[type=range]:focus::-webkit-slider-runnable-track {
+  background: rgba(49, 116, 173, 0.78);
+}
+.widget[iotb-widget="motor"]  input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 30px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: rgba(48, 113, 169, 0.78);
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+.widget[iotb-widget="motor"]  input[type=range]::-moz-range-thumb {
+  box-shadow: 0.9px 0.9px 1px #000031, 0px 0px 0.9px #00004b;
+  border: 1.8px solid #00001e;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  background: #ffffff;
+  cursor: pointer;
+}\

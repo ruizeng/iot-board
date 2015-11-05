@@ -1,0 +1,11 @@
+<div class="plug-title"><%=title%></div>
+<div class="plug-wrap">
+    <input type="checkbox" class="slider-v1" <%=status[0]?'checked':''%> id="autogen-plug-<%=cnt%>" />
+    <label for="autogen-plug-<%=cnt%>"></label>
+</div>
+<div class="clf"></div>
+  </script>
+  <script type="text/html" id="template-text">
+<%if(title){%>
+<div class="title"><%=title%></div>
+<%}%>

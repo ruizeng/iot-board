@@ -7,37 +7,55 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <link rel="stylesheet" href="css/reset.css" media="screen" type="text/css" />
-  <link rel="stylesheet" href="css/board.css" media="screen" type="text/css" />
-  <script src="thirdparty/zepto/zepto.js"></script>
-  <script src="thirdparty/zepto/event.js"></script>
-  <script src="js/widget.js"></script>
-  <script src="js/iotboard.js"></script>
-  <script src="js/binding.js"></script>
+  <link rel="stylesheet" href="core/css/reset.css" media="screen" type="text/css" />
+  <link rel="stylesheet" href="core/css/board.css" media="screen" type="text/css" />
+  <script src="core/js/zepto/zepto.js"></script>
+  <script src="core/js/arttemplate/template-native.js"></script>
+  <script src="core/js/zepto/event.js"></script>
+  <script src="core/js/widget.js"></script>
+  <script src="core/js/iotboard.js"></script>
+  <script src="core/js/binding.js"></script>
+
+  <!-- widgets template -->
+  <script src="widgets/templates/template.js"></script>
 
   <!-- add widget css files here -->
-  <link rel="stylesheet" href="widgets/text/text.widget.css" media="screen" type="text/css" />
-  <link rel="stylesheet" href="widgets/switch/switch.widget.css" media="screen" type="text/css" />
-  <link rel="stylesheet" href="widgets/led/led.widget.css" media="screen" type="text/css" />
+  <link rel="stylesheet" href="widgets/stylesheets/temperature.css" media="screen" type="text/css" />
+  <link rel="stylesheet" href="widgets/stylesheets/pm25.css" media="screen" type="text/css" />
+  <link rel="stylesheet" href="widgets/stylesheets/text.css" media="screen" type="text/css" />
+  <link rel="stylesheet" href="widgets/stylesheets/plug.css" media="screen" type="text/css" />
+  <link rel="stylesheet" href="widgets/stylesheets/humiture.css" media="screen" type="text/css" />
+  <link rel="stylesheet" href="widgets/stylesheets/air.css" media="screen" type="text/css" />
+  <link rel="stylesheet" href="widgets/stylesheets/motor.css" media="screen" type="text/css" />
+  <link rel="stylesheet" href="widgets/stylesheets/led.css" media="screen" type="text/css" />
+  <link rel="stylesheet" href="widgets/stylesheets/default.css" media="screen" type="text/css" />
   <!-- -->
 
   <!-- add widget js files here -->
-  <script src="widgets/text/text.widget.js"></script>
-  <script src="widgets/switch/switch.widget.js"></script>
-  <script src="widgets/led/led.widget.js"></script>
+  <script src="widgets/javascripts/temperature.js"></script>
+  <script src="widgets/javascripts/pm25.js"></script>
+  <script src="widgets/javascripts/text.js"></script>
+  <script src="widgets/javascripts/plug.js"></script>
+  <script src="widgets/javascripts/humiture.js"></script>
+  <script src="widgets/javascripts/air.js"></script>
+  <script src="widgets/javascripts/motor.js"></script>
+  <script src="widgets/javascripts/led.js"></script>
+  <script src="widgets/javascripts/default.js"></script>
   <!-- -->
 
   <!-- model here -->
-  <script src="models/dummy.model.js"></script>
+  <script src="models/dummy/dummy.model.js"></script>
   <!-- -->
 </head>
 <body>
-  <div class="widget" iotb-widget="text" data-label="text1" data-title="随意"></div>
-  <div class="widget" iotb-widget="text" data-label="text2" data-title="hell"></div>
-
-  <div class="widget" iotb-widget="switch" data-label="switch1" data-title="开关1"></div>
-  <div class="widget" iotb-widget="switch" data-label="switch2" data-title="开关2"></div>
-
-  <div class="widget" iotb-widget="led" data-label="led" data-title="灯泡"></div>
+  <div class="widget" iotb-widget="temperature" data-label="temperature" data-title="温度"></div>
+  <div class="widget" iotb-widget="pm25" data-label="pm25" data-title="PM2.5"></div>
+  <div class="widget" iotb-widget="text" data-label="text" data-title="消息"></div>
+  <div class="widget" iotb-widget="plug" data-label="text" data-title="开关"></div>
+  <div class="widget" iotb-widget="humiture" data-label="humiture" data-title="湿度"></div>
+  <div class="widget" iotb-widget="air" data-label="air" data-title="空气质量"></div>
+  <div class="widget" iotb-widget="motor" data-label="motor" data-title="电机"></div>
+  <div class="widget" iotb-widget="led" data-label="led" data-title="三色灯"></div>
+  <div class="widget" iotb-widget="default" data-label="default" data-title="自定义组件" data-config='[{"value_type": 2,"name": "temperature"},{"value_type": 5,"name": "pwm"},{"value_type": 11,"name": "text"}]'></div>
 </body>
 </html>

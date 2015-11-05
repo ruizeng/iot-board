@@ -1,0 +1,18 @@
+<%if(title){%>
+    <div class="title"><%=title%></div>
+<%}%>
+    <div class="container">
+        <div class="de">
+            <div class="den">
+              <div class="dene">
+                <div class="denem">
+                  <div class="deneme">
+                    <w class="temmperature-text"><%if(status[0]!='-'){%><%=$splitNumber(status[0], 1)[0]%><%}%></w>
+                    <span><%if(status[0]!='-'){%>.<%=$splitNumber(status[0], 1)[1]%><%}%></span>
+                    <strong>&deg;</strong>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+<div class="clf"></div>

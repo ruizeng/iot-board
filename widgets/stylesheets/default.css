@@ -1,0 +1,46 @@
+.widget[iotb-widget="default"] .default-status-wrap{
+  display:-webkit-box;
+  -webkit-box-orient:horizontal;
+  width:100%;
+}
+.widget[iotb-widget="default"] .default-status-name{
+  -webkit-box-flex:1;
+  text-align:start;
+  width:200px;
+  padding-left:4px;
+  line-height:46px;
+  color: rgba(48, 113, 169, 1);;
+  font-weight: bold;
+}
+.widget[iotb-widget="default"] .default-status-input-wrap{
+  position:relative;
+  -webkit-box-flex:1;
+  padding:3px;
+}
+.widget[iotb-widget="default"] .default-status-input{
+  width: 100px;
+  height: 18px;
+  background: #eee;
+  border-radius: 4px;
+  padding: 10px;
+  border:1px solid #ccc;
+}
+.widget[iotb-widget="default"] .btn {
+    margin: 0 10px;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+}
+.widget[iotb-widget="default"] .btn-refresh {
+    float: left;
+    margin-bottom: 10px;
+    background: rgba(48, 113, 169, 0.78);
+}
+.widget[iotb-widget="default"] .btn-set {
+    float: right;
+    margin-right: 10px;
+    background: rgba(200, 113, 169, 0.78);
+}
