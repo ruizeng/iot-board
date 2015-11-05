@@ -10,7 +10,7 @@
     if (r!=null&&r.length>1) return (r[2]); return null;
   }
 
-  if(GetQueryString('from')=='wechat' || GetQueryString('from')=='ide') {
+  if(getQueryString('from')=='wechat' || getQueryString('from')=='ide') {
     window.initFreeIOTWechat();
   } else {
     window.initFreeIOTJSBridge();
@@ -18,35 +18,35 @@
 
   var model = {
     getStatusPending: false,
-    getStatusQueue: [],
+    getStatusQueue: []
   };
 
   function resetModel (){
     model.getStatusPending = false;
-    getStatusQueue = [];
+    model.getStatusQueue = [];
   }
 
   function waitForGettingStatus(label, callback) {
+    var q = model.getStatusQueue;
     if (!model.getStatusPending) {
       model.getStatusPending = true;
-      getStatusQueue.push({
+      q.push({
         label: label,
         callback: callback
       });
       window.pando.getCurrentStatus(function(responseData) {
         if(responseData.code != 0) {
-          alert(responseData.message);
+          alert(responseData.msg);
           return resetModel();
         }
         var status = responseData.data;
-        var q = model.getStatusQueue;
         for(var i=0; i<q.length; i++){
           q[i].callback(status[q[i].label]);
         }
         resetModel();
       });
     } else {
-      getStatusQueue.push({
+      q.push({
         label: label,
         callback: callback
       });
@@ -66,7 +66,7 @@
     window.pando.setCurrentStatus(data, function(responseData) {
       console.log("responseData: " + responseData);
       if(responseData.code != 0) {
-        alert(responseData.message);
+        alert(responseData.msg);
       }
     });
   }
@@ -79,7 +79,7 @@
    * @return {None}
    */
   model.getCurrentStatus = function(widget, label, callback) {
-    waitForGettingStatus(labal.callback);
+    waitForGettingStatus(label, callback);
   }
 
   window.iotboard.setModel(model);

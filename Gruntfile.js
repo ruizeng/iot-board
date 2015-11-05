@@ -27,7 +27,7 @@ module.exports = function(grunt) {
         separator: ';'
       },
       core: {
-        src: ['core/js/zepto/zepto.js', 'core/js/zepto/event.js', 'core/js/arttemplate/*.js','core/js/*.js'],
+        src: ['core/js/zepto/zepto.js', 'core/js/zepto/event.js', 'core/js/zepto/ajax.js', 'core/js/arttemplate/*.js','core/js/*.js'],
         dest: 'dist/iotboard.js'
       },
       css: {

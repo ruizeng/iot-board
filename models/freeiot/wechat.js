@@ -8,14 +8,11 @@ window.initFreeIOTWechat = function(){
 
   var getCurrentStatus = function(responseCallback) {
     $.ajax({
-      url:'http://freeiot.pandocloud.com/api/device/status/current?identifier='+iotboard.identifier,
+      url:'http://freeiot.pandocloud.com/api/device/status/current?identifier='+identifier,
       crossDomain:true,
       type:'get',
       success:function(r){
         console.log(r);
-        if(r.code!=0){
-          alert(r.msg);
-        }
         responseCallback(r);
       }
     });
@@ -23,16 +20,13 @@ window.initFreeIOTWechat = function(){
   var setCurrentStatus = function(data,responseCallback) {
     $.ajax({
       type:'post',
-      url:'http://freeiot.pandocloud.com/api/device/status/current?identifier='+iotboard.identifier,
+      url:'http://freeiot.pandocloud.com/api/device/status/current?identifier='+identifier,
       crossDomain:true,
       data:JSON.stringify(data),
       contentType:'application/json',
       success:function(r){
         console.log(r);
-        if(r.code!=0){
-          alert(r.msg);
-        }
-        responseCallback();
+        responseCallback(r);
       }
     });
   };
@@ -41,7 +35,7 @@ window.initFreeIOTWechat = function(){
   window.pando.getCurrentStatus = function(responseCallback) {
         getCurrentStatus(responseCallback);
   };
-  window.pando.setCurrentStatus = function(responseCallback) {
+  window.pando.setCurrentStatus = function(data, responseCallback) {
         setCurrentStatus(data, responseCallback);
   };
 
