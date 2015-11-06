@@ -397,14 +397,11 @@ window.initFreeIOTJSBridge = function(){
 
   var getCurrentStatus = function(responseCallback) {
     $.ajax({
-      url:'http://freeiot.pandocloud.com/api/device/status/current?identifier='+iotboard.identifier,
+      url:'http://freeiot.pandocloud.com/api/device/status/current?identifier='+identifier,
       crossDomain:true,
       type:'get',
       success:function(r){
         console.log(r);
-        if(r.code!=0){
-          alert(r.msg);
-        }
         responseCallback(r);
       }
     });
@@ -412,16 +409,13 @@ window.initFreeIOTJSBridge = function(){
   var setCurrentStatus = function(data,responseCallback) {
     $.ajax({
       type:'post',
-      url:'http://freeiot.pandocloud.com/api/device/status/current?identifier='+iotboard.identifier,
+      url:'http://freeiot.pandocloud.com/api/device/status/current?identifier='+identifier,
       crossDomain:true,
       data:JSON.stringify(data),
       contentType:'application/json',
       success:function(r){
         console.log(r);
-        if(r.code!=0){
-          alert(r.msg);
-        }
-        responseCallback();
+        responseCallback(r);
       }
     });
   };
@@ -430,7 +424,7 @@ window.initFreeIOTJSBridge = function(){
   window.pando.getCurrentStatus = function(responseCallback) {
         getCurrentStatus(responseCallback);
   };
-  window.pando.setCurrentStatus = function(responseCallback) {
+  window.pando.setCurrentStatus = function(data, responseCallback) {
         setCurrentStatus(data, responseCallback);
   };
 
@@ -446,7 +440,7 @@ window.initFreeIOTJSBridge = function(){
     if (r!=null&&r.length>1) return (r[2]); return null;
   }
 
-  if(GetQueryString('from')=='wechat' || GetQueryString('from')=='ide') {
+  if(getQueryString('from')=='wechat' || getQueryString('from')=='ide') {
     window.initFreeIOTWechat();
   } else {
     window.initFreeIOTJSBridge();
@@ -454,35 +448,35 @@ window.initFreeIOTJSBridge = function(){
 
   var model = {
     getStatusPending: false,
-    getStatusQueue: [],
+    getStatusQueue: []
   };
 
   function resetModel (){
     model.getStatusPending = false;
-    getStatusQueue = [];
+    model.getStatusQueue = [];
   }
 
   function waitForGettingStatus(label, callback) {
+    var q = model.getStatusQueue;
     if (!model.getStatusPending) {
       model.getStatusPending = true;
-      getStatusQueue.push({
+      q.push({
         label: label,
         callback: callback
       });
       window.pando.getCurrentStatus(function(responseData) {
         if(responseData.code != 0) {
-          alert(responseData.message);
+          alert(responseData.msg);
           return resetModel();
         }
         var status = responseData.data;
-        var q = model.getStatusQueue;
         for(var i=0; i<q.length; i++){
           q[i].callback(status[q[i].label]);
         }
         resetModel();
       });
     } else {
-      getStatusQueue.push({
+      q.push({
         label: label,
         callback: callback
       });
@@ -502,7 +496,7 @@ window.initFreeIOTJSBridge = function(){
     window.pando.setCurrentStatus(data, function(responseData) {
       console.log("responseData: " + responseData);
       if(responseData.code != 0) {
-        alert(responseData.message);
+        alert(responseData.msg);
       }
     });
   }
@@ -515,7 +509,7 @@ window.initFreeIOTJSBridge = function(){
    * @return {None}
    */
   model.getCurrentStatus = function(widget, label, callback) {
-    waitForGettingStatus(labal.callback);
+    waitForGettingStatus(label, callback);
   }
 
   window.iotboard.setModel(model);
