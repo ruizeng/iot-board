@@ -378,7 +378,7 @@ window.initFreeIOTJSBridge = function(){
     window.pando.getCurrentStatus = function(responseCallback) {
         callHandler('getCurrentStatus', {}, responseCallback);
     };
-    window.pando.setCurrentStatus = function(responseCallback) {
+    window.pando.setCurrentStatus = function(data, responseCallback) {
         callHandler('setCurrentStatus', data, responseCallback);
     }
 }
